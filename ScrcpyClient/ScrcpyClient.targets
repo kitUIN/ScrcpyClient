@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+        <ScrcpyTools Include="$(MSBuildThisFileDirectory)..\content\tools\**\*.*" />
+    </ItemGroup>
+
+    <Target Name="CopyScrcpyTools" AfterTargets="Build">
+        <Message Importance="High" Text="正在复制Scrcpy工具到输出目录..." />
+        <Copy SourceFiles="@(ScrcpyTools)"
+              DestinationFiles="@(ScrcpyTools->'$(TargetDir)tools\%(RecursiveDir)%(Filename)%(Extension)')"
+              SkipUnchangedFiles="true" />
+    </Target>
+</Project>
