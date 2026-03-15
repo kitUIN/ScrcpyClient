@@ -6,6 +6,8 @@ namespace ScrcpyClient.FFmpeg;
 public static class FFmpegRuntimeBootstrap
 {
     private const string ToolsDirectoryName = "tools";
+    private const string PathEnvironmentVariableName = "PATH";
+    private static readonly string[] EnvironmentVariableNames = ["FFMPEG_ROOT", "FFMPEG_PATH"];
     private static readonly string[] LibraryPrefixes = ["avcodec", "avformat", "avutil", "swscale", "swresample"];
     private static int initialized;
     private static IReadOnlyList<string> configuredSearchDirectories = Array.Empty<string>();
@@ -54,8 +56,48 @@ public static class FFmpegRuntimeBootstrap
     public static IReadOnlyList<string> GetDefaultSearchDirectories(string baseDirectory)
     {
         var fullBaseDirectory = Path.GetFullPath(baseDirectory);
+        var directories = new List<string>();
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-        return [Path.Combine(fullBaseDirectory, ToolsDirectoryName)];
+        void AddDirectory(string? directory)
+        {
+            if (string.IsNullOrWhiteSpace(directory))
+            {
+                return;
+            }
+
+            var fullPath = Path.GetFullPath(directory.Trim().Trim('"'));
+            if (seen.Add(fullPath))
+            {
+                directories.Add(fullPath);
+            }
+        }
+
+        foreach (var environmentVariableName in EnvironmentVariableNames)
+        {
+            var configuredPath = Environment.GetEnvironmentVariable(environmentVariableName);
+            if (string.IsNullOrWhiteSpace(configuredPath))
+            {
+                continue;
+            }
+
+            foreach (var pathEntry in configuredPath.Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+            {
+                AddDirectory(pathEntry);
+            }
+        }
+
+        var pathVariable = Environment.GetEnvironmentVariable(PathEnvironmentVariableName);
+        if (!string.IsNullOrWhiteSpace(pathVariable))
+        {
+            foreach (var pathEntry in pathVariable.Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+            {
+                AddDirectory(pathEntry);
+            }
+        }
+
+        AddDirectory(Path.Combine(fullBaseDirectory, ToolsDirectoryName));
+        return directories;
     }
 
     public static string BuildMissingLibrariesMessage(Exception exception)
@@ -84,7 +126,7 @@ public static class FFmpegRuntimeBootstrap
             lines.Add("No candidate directory currently contains FFmpeg DLLs with names like avcodec-*.dll or avutil-*.dll.");
         }
 
-        lines.Add("Suggested fix: place the FFmpeg DLLs directly in the demo output folder's '.\\tools' directory, then rerun the demo.");
+        lines.Add("Suggested fix: set FFMPEG_ROOT or FFMPEG_PATH to the directory that contains the FFmpeg DLLs, add that directory to PATH, or place the DLLs directly in the demo output folder's '.\\tools' directory, then rerun the demo.");
         return string.Join(Environment.NewLine, lines);
     }
 

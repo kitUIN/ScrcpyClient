@@ -36,9 +36,9 @@ dotnet run --project .\ScrcpyClient.React\ScrcpyClient.React.csproj -- scrcpy --
 
 - 需要可用的 `adb`。程序会从 `PATH`、`ANDROID_SDK_ROOT`、`ANDROID_HOME` 或 `ADB_PATH` 中查找。
 - 需要可用的 `scrcpy-server` 文件。项目已将 [ScrcpyClient/tools](ScrcpyClient/tools) 下的内容复制到输出目录。
-- `tools` 文件夹内必须包含 FFmpeg 原生 DLL，否则视频解码无法启动。
+- 需要可用的 FFmpeg 原生 DLL。程序会优先从环境变量 `FFMPEG_ROOT` 或 `FFMPEG_PATH` 指向的目录查找，然后检查环境变量 `PATH` 中的目录；如果仍未找到，再回退到输出目录下的 `tools` 文件夹。
 
-程序运行时会从输出目录下的 `./tools` 查找 FFmpeg。至少应包含这类文件：
+如果使用 `FFMPEG_ROOT` 或 `FFMPEG_PATH`，它们应指向包含 FFmpeg DLL 的目录；也可以配置多个目录，使用系统路径分隔符分开。也可以直接把 FFmpeg 所在目录加入 `PATH`。如果这些位置都未命中，至少需要在输出目录下的 `./tools` 放入这类文件：
 
 - `avcodec-62.dll`
 - `avformat-62.dll`
