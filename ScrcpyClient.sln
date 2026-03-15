@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrcpyClient", "ScrcpyClient\ScrcpyClient.csproj", "{991A49B3-2F96-47D3-AF26-FD997616342B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrcpyClient.SDL2", "ScrcpyClient.SDL2\ScrcpyClient.SDL2.csproj", "{EC17B98C-F5BE-49FC-84C4-11A1AC8500D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrcpyClient.Demo", "ScrcpyClient.Demo\ScrcpyClient.Demo.csproj", "{74C1E876-DC1B-4BAE-A002-F1B20AC79B1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrcpyClient.React", "ScrcpyClient.React\ScrcpyClient.React.csproj", "{D1863906-F868-4C7A-92D3-3158DA0FF7DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrcpyClient.Tests", "ScrcpyClient.Tests\ScrcpyClient.Tests.csproj", "{284BDD0E-6AAC-4F77-9774-46109BE94377}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{991A49B3-2F96-47D3-AF26-FD997616342B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{991A49B3-2F96-47D3-AF26-FD997616342B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{991A49B3-2F96-47D3-AF26-FD997616342B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{991A49B3-2F96-47D3-AF26-FD997616342B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC17B98C-F5BE-49FC-84C4-11A1AC8500D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC17B98C-F5BE-49FC-84C4-11A1AC8500D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC17B98C-F5BE-49FC-84C4-11A1AC8500D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC17B98C-F5BE-49FC-84C4-11A1AC8500D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74C1E876-DC1B-4BAE-A002-F1B20AC79B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C1E876-DC1B-4BAE-A002-F1B20AC79B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C1E876-DC1B-4BAE-A002-F1B20AC79B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C1E876-DC1B-4BAE-A002-F1B20AC79B1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1863906-F868-4C7A-92D3-3158DA0FF7DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1863906-F868-4C7A-92D3-3158DA0FF7DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1863906-F868-4C7A-92D3-3158DA0FF7DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1863906-F868-4C7A-92D3-3158DA0FF7DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{284BDD0E-6AAC-4F77-9774-46109BE94377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284BDD0E-6AAC-4F77-9774-46109BE94377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284BDD0E-6AAC-4F77-9774-46109BE94377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284BDD0E-6AAC-4F77-9774-46109BE94377}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

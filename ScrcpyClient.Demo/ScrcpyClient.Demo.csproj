@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScrcpyClient\ScrcpyClient.csproj" />
+    <ProjectReference Include="..\ScrcpyClient.SDL2\ScrcpyClient.SDL2.csproj" />
+    <ProjectReference Include="..\FarmTest\FarmTest.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="SharpAdbClient" Version="2.3.23" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="ffmpeg\**\*.dll" CopyToOutputDirectory="PreserveNewest" LinkBase="tools" Condition="Exists('ffmpeg')" />
+    <None Include="..\ScrcpyClient\tools\*" CopyToOutputDirectory="PreserveNewest" LinkBase="tools" Condition="Exists('..\ScrcpyClient\tools')" />
+    <None Include="..\FarmTest\images\ground_template.png" CopyToOutputDirectory="PreserveNewest" LinkBase="assets\farm-test" Condition="Exists('..\FarmTest\images\ground_template.png')" />
+  </ItemGroup>
+</Project>
